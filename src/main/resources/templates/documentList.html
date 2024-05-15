@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Styles/MainStyle.css">
+    <title>Список документов</title>
+</head>
+<body>
+<h2>Список документов</h2>
+
+<div class="filter-container">
+    <form id="filterForm" action="/documents/filter" method="GET">
+        <div class="input-container">
+            <input type="text" name="query" placeholder="Поиск по заголовку" th:value="${query}">
+            <select name="typeId">
+                <option value="">Все</option>
+                <th:block th:each="type : ${typeDocList}">
+                    <option th:value="${type.id}" th:text="${type.name}" th:selected="${type.id == typeId}"></option>
+                </th:block>
+            </select>
+            <label for="startDate">Дата от:</label>
+            <input type="date" id="startDate" name="startDate" th:value="${startDate}">
+            <label for="endDate">Дата до:</label>
+            <input type="date" id="endDate" name="endDate" th:value="${endDate}">
+        </div>
+        <div class="button-container">
+            <button type="submit">Поиск/Фильтрация</button>
+            <a href="/documents" class="button">Отменить поиск/фильтрацию</a>
+        </div>
+    </form>
+</div>
+
+<div class="search-indicator" th:if="${query != null || typeId != null || startDate != null || endDate != null}">
+    <p>Показаны результаты
+        <span th:if="${query != null && !query.isEmpty()}">по запросу: "<span th:text="${query}"></span>", </span>
+        <span th:if="${typeId != null && typeId > 0}">тип документа: <span th:text="${typeDocName}"></span>, </span>
+        <span th:if="${startDate != null && !startDate.isEmpty()}">с: <span th:text="${startDate}"></span>, </span>
+        <span th:if="${endDate != null && !endDate.isEmpty()}">по: <span th:text="${endDate}"></span></span>
+    </p>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Заголовок</th>
+        <th>Дата</th>
+        <th>Документ</th>
+        <th>Тип документа</th>
+        <th>Изменение</th>
+        <th>Удаление</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="doc : ${documents}">
+        <tr>
+            <td th:text="${doc.id}"></td>
+            <td th:text="${doc.title}"></td>
+            <td th:text="${#dates.format(doc.date, 'dd/MM/yyyy')}"></td>
+            <td><a th:href="@{'/documents/download/' + ${doc.id}}" th:text="${doc.fileName}"></a></td>
+            <td th:text="${doc.type.name}"></td>
+            <td><a th:href="@{'/documents/update/' + ${doc.id}}">Изменить</a></td>
+            <td><a th:href="@{'/documents/delete/' + ${doc.id}}">Удалить</a></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+
+<a href="/documents/create" class="create-doc">Создать документ</a>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+/* ErrorStyle.css */
+
+/* Общий стиль для всего документа */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h2 {
+    color: #ff5555;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+a {
+    background-color: #03dac6;
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+a:hover {
+    background-color: #018786;
+}

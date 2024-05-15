@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Styles/UpdateStyle.css">
+    <title>Обновление документа</title>
+</head>
+<body>
+<h2>Обновление документа</h2>
+<form action="#" th:action="@{/documents/update/{id}(id=${document.id})}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" th:value="${document.id}" />
+    <div>
+        <label for="title">Заголовок:</label>
+        <input type="text" id="title" name="title" th:value="${document.title}" required/>
+    </div>
+    <div>
+        <label for="date">Дата:</label>
+        <input type="date" id="date" name="date" th:value="${dateCurr}" required/>
+    </div>
+    <div>
+        <label for="typeId">Тип документа:</label>
+        <select id="typeId" name="typeId" required>
+            <option th:each="type : ${typeDocList}" th:value="${type.id}" th:text="${type.getName}"></option>
+        </select>
+    </div>
+    <div>
+        <label for="content">Загруженный документ: <span th:text="${document.fileName}"></span></label>
+    </div>
+    <div>
+        <label for="content">Хотите изменить документ?</label>
+        <input type="file" id="content" name="content"/>
+    </div>
+    <div>
+        <button type="submit">Обновить</button>
+    </div>
+</form>
+<a href="/documents" class="back-link">Назад к списку</a>
+
+</body>
+</html>

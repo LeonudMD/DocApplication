@@ -1,0 +1,81 @@
+/* AddStyle.css */
+
+/* Общий стиль для всего документа */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    padding: 20px;
+    color: #ffffff;
+    border-bottom: 1px solid #333333;
+}
+
+/* Стиль для формы */
+form {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+form label {
+    margin-bottom: 5px;
+    color: #e0e0e0;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="file"],
+form select {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+form input[type="submit"] {
+    background-color: #6200ea;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #3700b3;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    background-color: #03dac6;
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+.back-link:hover {
+    background-color: #018786;
+}

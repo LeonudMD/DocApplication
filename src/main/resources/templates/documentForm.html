@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Styles/AddStyle.css">
+    <title>Создание документа</title>
+</head>
+<body class="dark-theme">
+<h2>Создание документа</h2>
+<form th:action="@{/documents/create}" th:object="${document}" method="post" enctype="multipart/form-data">
+    <p>
+        <label>Заголовок:</label>
+        <input type="text" th:field="*{title}" required />
+    </p>
+    <p>
+        <label>Дата:</label>
+        <input type="date" th:field="*{date}" required />
+    </p>
+    <p>
+        <label>Документ:</label>
+        <input type="file" th:field="*{content}" required />
+    </p>
+    <p>
+        <label>Тип документа:</label>
+        <select th:field="*{typeId}">
+            <option value="" disabled selected>Выберите тип:</option>
+            <option th:each="typeDoc : ${typeDocList}" th:value="${typeDoc.id}" th:text="${typeDoc.name}"></option>
+        </select>
+    </p>
+    <p>
+        <input type="submit" value="Создать" />
+    </p>
+    <a href="/documents" class="back-link">Назад к списку</a>
+</form>
+</body>
+</html>
